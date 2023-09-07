@@ -1,0 +1,12 @@
+{% extends 'dashboard/base.html' %}
+{% block contacts %} 
+
+<div class="container">
+<form method="post" action="">
+    {% csrf_token %}
+      <div class="heading"><h1>Are you sure you want to delete?</h1><br></div>
+      <input class="btn btn-danger" type="submit" value="Yes" />
+      <a href="{% url 'dashboard:blog_view' %}"><div class="btn btn-primary">Cancel</div></a>
+ </form>
+</div>
+ {% endblock %}

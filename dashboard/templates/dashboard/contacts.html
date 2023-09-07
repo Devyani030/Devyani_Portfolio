@@ -1,0 +1,127 @@
+{% extends 'dashboard/base.html' %}
+{% block contacts %} 
+<div class="heading mt-3"><center><h1 style="font-family:cursive ;">Recieved Messages</h1></center></div>
+<div class="container mt-5" id="items-table">
+<table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts  %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{contact.name}}</td>
+        <td>{{contact.email}}</td>
+        <td><a href = "{% url 'dashboard:received_messages' contact.id %}">{{ contact.subject}}</a></td>
+        <td><i id="myButton{{contact.id}}"class="material-icons"    style="cursor: pointer; color:red;" >&#xe872;</i></td>
+      </tr>
+      <div  id="myPopup{{contact.id}}" class="popup myPopup">
+        <div class="popup-content">
+            <h4 style="color: red;">
+                  Are you sure you want to Delete message from "{{contact.name}}"?
+              </h4>
+              <button id="confirmPopup" style="background-color: red;"><a style="text-decoration: none; color: antiquewhite;" href="{% url 'dashboard:delete_messages' contact.id %}">Confirm</a></button>
+              <button id="closePopup{{contact.id}}">Close</button> 
+             
+        </div>
+      </div>
+      
+      <script>
+        var myButton{{contact.id}} = document.getElementById("myButton{{contact.id}}");
+        var myPopup{{contact.id}} = document.getElementById('myPopup{{contact.id}}');
+        myButton{{contact.id}}.addEventListener("click", function () {
+            myPopup{{contact.id}}.classList.add("show");
+        });
+        var confirmPopup{{contact.id}} = document.getElementById("confirmPopup");
+         confirmPopup{{contact.id}}.addEventListener("click", function () {
+          myPopup{{contact.id}}.classList.remove("show");
+        });
+        var closePopup{{contact.id}} = document.getElementById("closePopup{{contact.id}}");
+         closePopup{{contact.id}}.addEventListener("click", function () {
+          myPopup{{contact.id}}.classList.remove("show");
+         });
+        window.addEventListener("click", function (event) {
+            if (event.target == myPopup{{contact.id}}) {
+                myPopup{{contact.id}}.classList.remove("show"); 
+            }
+        });
+      
+       
+      </script>
+      {% empty %}
+      
+      <p>No messages Received</p>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<style>
+  .popup {
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: none;
+  }
+  .popup-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888888;
+      width: 30%;
+      font-weight: bolder;
+  }
+  .popup-content button {
+      display: block;
+      margin: 0 auto;
+  }
+  .show {
+      display: block;
+  }
+  h1 {
+      color: green;
+  }
+</style>
+<!-- <script>
+  function showPopup() {
+  const myButton = document.getElementById("myButton{{contact.id}}");
+  const myPopup = document.getElementById("myPopup{{contact.id}}");
+
+  myButton.addEventListener("click", () => {
+    myPopup.classList.add("show");
+  });
+
+  const confirmPopup = document.getElementById("confirmPopup{{contact.id}}");
+  confirmPopup.addEventListener("click", () => {
+    myPopup.classList.remove("show");
+  });
+
+  const closePopup = document.getElementById("closePopup{{contact.id}}");
+  closePopup.addEventListener("click", () => {
+    myPopup.classList.remove("show");
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === myPopup) {
+      myPopup.classList.remove("show");
+    }
+  });
+}
+
+</script> -->
+
+
+
+  
+
+{% endblock %} 
