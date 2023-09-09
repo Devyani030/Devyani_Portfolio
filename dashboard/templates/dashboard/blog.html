@@ -25,7 +25,7 @@
         <td><a href = "{% url 'dashboard:contents' blog.id %}">Show Content</a></td>
         <td>{{blog.created_on}}</td>
         <td><a href="{% url 'dashboard:delete_blog' blog.id %}"><button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button></a>
-            <a href="#"><button type="button" class="btn btn-success">
+            <a href="{% url 'dashboard:update' blog.id %}"><button type="button" class="btn btn-success">
                 <i class="bi bi-pen"></i></button>
               </a>
         </td>

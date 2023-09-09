@@ -86,3 +86,24 @@ def delete_blog(request, pk):
 		queryset.delete()
 		return redirect("dashboard:blog_view")
 	return render(request, 'dashboard/delete_blog_items.html')
+
+def update_blog(request, pk):
+    queryset= Blogs.objects.get(id=pk)
+    if request.method == "POST":
+        
+        form = AddForm(request.POST)
+        
+        if form.is_valid():
+           b = Blogs.objects.get(id=pk)
+           b.title = form.cleaned_data["title"]
+           b.author= form.cleaned_data['author']
+           b.updated_on = timezone.now()
+           b.content= form.cleaned_data['content']
+           b.status= form.cleaned_data['status']
+           b.created_on= timezone.now()
+           b.save()
+           return redirect("dashboard:blog_view")
+    else:
+        form = AddForm()
+
+    return render(request, "dashboard/update_blog.html", {"form": form})

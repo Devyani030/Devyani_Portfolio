@@ -10,4 +10,5 @@ urlpatterns = [
     path("contents/<int:pk>/", views.Blogcontent.as_view(), name="contents"),
     path("addblog/", views.add_blog, name="new_blog"),
     path('<str:pk>/delete_items/', views.delete_blog, name="delete_blog"),
+    path('update/<int:pk>' , views.update_blog, name="update"),
 ]
