@@ -41,9 +41,11 @@
 <body>
 
   <!-- ======= Header ======= -->
+  <a href="{% url 'login' %}"><button type="button" class="btn btn-success" style="margin-left: 1250px; margin-top: 10px;">Login</button></a>
   <header id="header">
-    <div class="container">
+    
 
+    <div class="container">
       <h1><a href="index.html">Devyani Rai</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="mr-auto"><img src="{% static 'website/assets/img/logo.png' %}" alt="" class="img-fluid"></a> -->
@@ -55,10 +57,12 @@
           <li><a class="nav-link" href="#about">About</a></li>
           <li><a class="nav-link" href="#resume">Resume</a></li>
           <li><a class="nav-link scrollto " href="#blog">Blog</a></li>
-          <!--<li><a class="nav-link" href="#services">Services</a></li>
-          <li><a class="nav-link" href="#portfolio">Portfolio</a></li>-->
           <li><a class="nav-link" href="#contact">Contact</a></li>
+          <!-- <li><a class="nav-link" href="{% url 'login' %}">Admin Login</a></li> -->
+          <!--<li><a class="nav-link" href="#portfolio">Portfolio</a></li>-->
+          
         </ul>
+        
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
