@@ -42,10 +42,10 @@
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>-->
         </ul>
-        
-        <form class="d-flex" style="margin-left: 600px;" >
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <h6 style="color: white; margin-left: 400px; padding-top: 15px; padding-left:10px ;">Hello,{{user}}</h6>&nbsp;&nbsp;
+        <form class="d-flex">
+          <input style="width: 200px;"form-control me-2" type="search" placeholder="Search" aria-label="Search">&nbsp;
+          <button class="btn btn-outline-success" type="submit">Search</button>&nbsp;
         </form>
         <div >
           <a href="{% url 'dashboard:logout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
